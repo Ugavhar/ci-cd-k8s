@@ -1,6 +1,6 @@
 env:
  repo: https://github.com/farrukh90/artemis
- app_version: 3.0.0
+ app_version: 4.0.0
  region: us-central1
  project_id: ${{ secrets.PROJECT_ID }}
  app_name: artemis
@@ -52,11 +52,6 @@ jobs:
       - name: Authonticate to Registry
         run: |
           gcloud auth configure-docker ${{ env.region }}-docker.pkg.dev
-
-
-          
-        
-
 
       - name: Push
         run: docker push ${{ env.region }}-docker.pkg.dev/${{ env.project_id }}/${{ env.artifact_repository }}/${{ env.app_name }}:${{ env.tag_new_version }}
